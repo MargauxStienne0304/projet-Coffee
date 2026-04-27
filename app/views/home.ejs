@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La boutique de oCoffee des frères Pepper, spécialistes du café à Hauts-de-Cloques">
+
+  <!-- Title -->
+  <title>oCoffee</title>
+
+  <!-- Common styles -->
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <!-- Common scripts -->
+  <script defer src="/js/header.js"></script>
+
+  <!-- Style -->
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+  
+
+<%- include ("partials/header.ejs") %>
+
+  <main>
+    <section id="about">
+      <div>
+          <h1>Votre spécialiste Haucloquois du café</h1>
+          <p>oCoffee est un détaillant de café et de produits associés à la consommation du café basé dans la ville de Hauts-de-Cloques. Nous importons nos produits directement des producteurs, et nous les sélectionnons selon des critères exigeants de qualité. oCoffee est reconnu à l’échelle départementale.</p>
+          <a class="button" href="/catalog">Découvrir notre catalogue</a>
+      </div>
+      <img src="/images/about.jpg" alt="Selection de nos meilleurs cafés oCoffee">
+    </section>
+
+    <section id="latest-products">
+      <h2>Nouveautés</h2>
+      
+      <ul>
+        <% for (const coffee of coffees) {%> 
+        <li>
+          
+          <article>
+            <img src="/images/coffees/<%= coffee.reference %>.png" alt="<%= coffee.name %>">
+            <div>
+              <h3><%= coffee.name %></h3>
+              <a class="button-outline" href="/cafe/<%= coffee.name%>">Voir le détail</a>
+            </div>
+          </article>
+          
+        </li>
+        <%}%>
+      </ul>
+      
+    </section>
+
+  </main>
+
+<%- include ("partials/footer.ejs") %>

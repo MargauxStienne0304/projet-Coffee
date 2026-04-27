@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- Common meta tags go here -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La boutique de oCoffee des frères Pepper, spécialistes du café à Hauts-de-Cloques">
+
+    <!-- Common styles go here -->
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/layout.css">
+
+    <!-- Common scripts go here -->
+  <script defer src="/js/header.js"></script>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="/css/catalog.css" />
+
+    <!-- Scripts -->
+    <script defer src="/js/catalog.js"></script>
+  </head>
+
+  <body>
+    <!-- Include Header here -->
+     <%- include ("partials/header.ejs") %>
+
+    <main>
+      <section id="catalog">
+        <h1>Notre catalogue</h1>
+
+  
+        <div class="articles only-display-3-articles" id="articles-list">
+          <% for (const coffee of coffees ) {%>
+          <article>
+            <img
+              src="/images/coffees/<%=coffee.reference%>.png"
+              alt="<%= coffee.name%>"
+            />
+            <div>
+              <h2><%= coffee.name%></h2>
+              <p><%= coffee.origin%></p>
+              <p><%= coffee.price_kg%> /kg</p>
+              <a class="button-outline" href="/cafe/<%= coffee.name%>">Voir le détail</a>
+            </div>
+          </article>
+          <%}%>
+        </div>
+
+          
+        <button class="button" id="see-all-products-button">
+          Voir tous les produits
+        </button>
+      </section>
+    </main>
+
+
+<%- include ("partials/footer.ejs") %>
+
+  </body>
+</html>
